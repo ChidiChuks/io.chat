@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-io.sockets.on('connections', function(socket) {
+io.sockets.on('connection', function(socket) {
     connections.push(socket);
     console.log('Connected: %s sockets connected', connections.length);
 
@@ -25,6 +25,6 @@ io.sockets.on('connections', function(socket) {
     //Send Message
     socket.on('send message', function(data) {
         console.log(data);
-        io.sockets.emit('new message', { msg: data })
+        io.sockets.emit('new message', { msg: data });
     });
 });
